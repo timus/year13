@@ -50,6 +50,7 @@ class OccupationsController extends BaseController
         $this->occupationSkillComparisonService->setSkillsScope();
         $occupation_1 = $this->occupationSkillComparisonService->getOccupationSkills($request->get('occupation_1'));
         $occupation_2 = $this->occupationSkillComparisonService->getOccupationSkills($request->get('occupation_2'));
+        // TODO : Use validator to ensure they are giving correct payload from external source
         $matchPayload = $this->occupationSkillComparisonService->compare($occupation_1, $occupation_2);
 
         return $matchPayload;

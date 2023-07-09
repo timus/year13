@@ -48,28 +48,27 @@ class OccupationSkillComparisonService implements OccupationSkillComparisonServi
     public function compare(array $occupation_1, array $occupation_2)
     {
         // O(N)
-        $flattened_occupation1 = $this->flattenOccupation($occupation_1);
-
+        $flattenedOccupation1 = $this->flattenOccupation($occupation_1);
         // O(N)
-        $flattened_occupation2 = $this->flattenOccupation($occupation_2);
+        $flattenedOccupation2 = $this->flattenOccupation($occupation_2);
 
         // we can start from any occupation  to compare
         $attributeMatchCounter = 0;
         $sum = 0;
         $breakdown = [];
         // O(N)
-        foreach ($flattened_occupation1 as $key => $val) {
-            if (!array_key_exists($key, $flattened_occupation2)) {
+        foreach ($flattenedOccupation1 as $key => $val) {
+            if (!array_key_exists($key, $flattenedOccupation2)) {
                 continue;
             }
-            $match = $this->compareIndividualAttributes($val, $flattened_occupation2[$key]);
+            $match = $this->compareIndividualAttributes($val, $flattenedOccupation2[$key]);
             $attributeMatchCounter++;
             $sum = $sum + $match;
             // payload for break down
             // DTO is better solution than array here :)
             $breakdown[] = ['attribute' => $key,
                 'occupation_1' => $val,
-                'occupation_2' => $flattened_occupation2[$key],
+                'occupation_2' => $flattenedOccupation2[$key],
                 'match' => round($match * 100)
             ];
         }
@@ -89,12 +88,12 @@ class OccupationSkillComparisonService implements OccupationSkillComparisonServi
      */
     private function flattenOccupation(array $occupation)
     {
-        $flattened_occupation = [];
+        $flattenedOccupation = [];
         foreach ($occupation as $key => $val) {
-            $flattened_occupation[$val[1]] = (int)$val[0];
+            $flattenedOccupation[$val[1]] = (int)$val[0];
         }
 
-        return $flattened_occupation;
+        return $flattenedOccupation;
     }
 
     /**

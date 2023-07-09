@@ -98,24 +98,4 @@ export default {
     margin-bottom: 0.2rem
   }
 }
-
-.divTable {
-  display: table;
-  width: auto;
-  background-color: #eee;
-  border: 1px solid #666666;
-  border-spacing: 5px;
-}
-
-.divRow {
-  width: auto;
-  display: table-row;
-}
-
-.divCell {
-  width: 200px;
-  float: left;
-  display: table-column;
-  background-color: rgb(212, 209, 209);
-}
 </style>

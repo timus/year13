@@ -52684,7 +52684,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.form-group label[data-v-440dff1c] {\n  font-size: 0.8rem;\n  text-align: left;\n  display: block;\n  margin-bottom: 0.2rem;\n}\n.divTable[data-v-440dff1c] {\n  display: table;\n  width: auto;\n  background-color: #eee;\n  border: 1px solid #666666;\n  border-spacing: 5px;\n}\n.divRow[data-v-440dff1c] {\n  width: auto;\n  display: table-row;\n}\n.divCell[data-v-440dff1c] {\n  width: 200px;\n  float: left;\n  display: table-column;\n  background-color: #d4d1d1;\n}\n", ""]);
+exports.push([module.i, "\n.form-group label[data-v-440dff1c] {\n  font-size: 0.8rem;\n  text-align: left;\n  display: block;\n  margin-bottom: 0.2rem;\n}\n", ""]);
 
 // exports
 
