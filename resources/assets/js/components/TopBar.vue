@@ -9,7 +9,7 @@
         name: 'top-bar',
         props: {
             name: {
-                default: '{ YOUR_NAME }'
+                default: '{ Sumit Banskota }'
             }
         }
     }

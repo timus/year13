@@ -49,12 +49,14 @@ class OccupationSkillComparisonService implements OccupationSkillComparisonServi
     {
         // O(N)
         $flattened_occupation1 = $this->flattenOccupation($occupation_1);
+
         // O(N)
         $flattened_occupation2 = $this->flattenOccupation($occupation_2);
 
         // we can start from any occupation  to compare
         $attributeMatchCounter = 0;
         $sum = 0;
+        $breakdown = [];
         // O(N)
         foreach ($flattened_occupation1 as $key => $val) {
             if (!array_key_exists($key, $flattened_occupation2)) {
@@ -63,10 +65,21 @@ class OccupationSkillComparisonService implements OccupationSkillComparisonServi
             $match = $this->compareIndividualAttributes($val, $flattened_occupation2[$key]);
             $attributeMatchCounter++;
             $sum = $sum + $match;
+            // payload for break down
+            // DTO is better solution than array here :)
+            $breakdown[] = ['attribute' => $key,
+                'occupation_1' => $val,
+                'occupation_2' => $flattened_occupation2[$key],
+                'match' => round($match * 100)
+            ];
         }
-        $match =  ($sum / $attributeMatchCounter) * 100;
-
-        return round($match);
+        // Nothing matched
+        if ($attributeMatchCounter === 0) {
+            return 0;
+        }
+        $match = ($sum / $attributeMatchCounter) * 100;
+        //TODO: Use DTO
+        return ['match' => round($match), 'breakdown' => $breakdown];
     }
 
     /**
